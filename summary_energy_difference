@@ -1,0 +1,11 @@
+> grep 'ENERGY| Total FORCE_EVAL' 1_ground_state/cp2k.out
+
+  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.196970133486161
+
+> grep 'ENERGY| Total FORCE_EVAL' 2_excited_state/cp2k.out
+
+  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.128120947392404
+
+energy atomic unit: 1 Hartree (1 H) = 27.211 eV
+
+(630.1969701334 H - 630.1281206714 H)*27.211 eV/H = 1.873 eV

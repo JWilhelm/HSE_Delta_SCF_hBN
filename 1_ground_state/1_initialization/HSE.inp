@@ -1,0 +1,101 @@
+&GLOBAL
+  PROJECT  hBN_vacancy
+  PRINT_LEVEL MEDIUM
+  RUN_TYPE ENERGY
+&END GLOBAL
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME  BASIS_MOLOPT
+    BASIS_SET_FILE_NAME  BASIS_MOLOPT_UZH
+    BASIS_SET_FILE_NAME  BASIS_ADMM_UZH
+    POTENTIAL_FILE_NAME  GTH_POTENTIALS
+    CHARGE -1
+    UKS
+    MULTIPLICITY 3
+    &MGRID
+      CUTOFF  500
+      REL_CUTOFF  100
+    &END MGRID
+    &QS
+      METHOD GPW
+      EPS_DEFAULT 1.0E-12
+      EPS_PGF_ORB 1.0E-12
+    &END QS
+    &SCF
+      EPS_SCF 1.0E-7
+      MAX_SCF 20
+      SCF_GUESS RESTART
+      &OT
+         MINIMIZER DIIS
+         PRECONDITIONER FULL_ALL
+      &END OT
+      &OUTER_SCF
+        EPS_SCF 1.0E-7
+        MAX_SCF 10
+      &END
+      CHOLESKY OFF
+      EPS_EIGVAL 1.0E-5
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL
+        &XWPBE
+          SCALE_X -0.25
+          SCALE_X0 1.0
+          OMEGA 0.11
+        &END
+        &PBE
+          SCALE_X 0.0
+          SCALE_C 1.0
+        &END PBE
+      &END XC_FUNCTIONAL
+      &HF
+        &SCREENING
+          EPS_SCHWARZ 1.0E-6
+          SCREEN_ON_INITIAL_P FALSE
+        &END
+        &MEMORY
+          MAX_MEMORY 16000
+          EPS_STORAGE_SCALING 0.1
+        &END
+        &INTERACTION_POTENTIAL
+          POTENTIAL_TYPE SHORTRANGE
+          OMEGA 0.11
+        &END
+        FRACTION 0.25
+      &END
+    &END XC
+    &AUXILIARY_DENSITY_MATRIX_METHOD
+      METHOD BASIS_PROJECTION
+      ADMM_PURIFICATION_METHOD NONE
+    &END
+! commented: printing of HSE06 eigenvalues
+!    &PRINT
+!      &MO
+!        EIGENVALUES
+!      &END MO
+!    &END PRINT
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 17.52790 17.52790 15.00000  
+      ALPHA_BETA_GAMMA 90.0000  90.0000 120.0000
+      PERIODIC XY
+    &END CELL
+    &TOPOLOGY
+            COORD_FILE_NAME   struc.cif
+            COORD_FILE_FORMAT CIF
+    &END TOPOLOGY
+    &KIND B
+      BASIS_SET ORB      TZVP-MOLOPT-PBE-GTH-q3
+      BASIS_SET AUX_FIT  admm-dzp-q3
+      POTENTIAL          GTH-PADE-q3
+    &END KIND
+    &KIND N
+      BASIS_SET ORB      TZVP-MOLOPT-GTH
+      BASIS_SET AUX_FIT  admm-dzp-q5
+      POTENTIAL          GTH-PADE-q5
+    &END KIND
+
+  &END SUBSYS
+&END FORCE_EVAL
