@@ -1,0 +1,24 @@
+GEOOPT OF GROUND STATE
+
+3_ground_state_geoopt/cp2k.out:      ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.193275073419386
+
+
+GEOOPT OF EXCITED STATE
+
+2_flipped_occupation/cp2k.out:       ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.124294037811069
+2_flipped_occupation/cp2k.out:       ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.130130881602554
+2_flipped_occupation/cp2k.out:       ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.184898734211174        <- occupation flip
+2_flipped_occupation/cp2k.out:       ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.189189102608452
+
+3_flipped_again_occupation/cp2k.out: ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.130130884289770
+3_flipped_again_occupation/cp2k.out: ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.131361646306573
+3_flipped_again_occupation/cp2k.out: ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.132369698968660
+3_flipped_again_occupation/cp2k.out: ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.184253153507825        <- occupation flip
+
+4_flipped_again_occupation/cp2k.out: ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.132369699915898
+4_flipped_again_occupation/cp2k.out: ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:             -630.185494745834490        <- occupation flip
+
+
+ENERGY DIFFERENCE
+
+(630.193275073419386 - 630.132369699915898) * 27.211 eV = 1.657 eV
